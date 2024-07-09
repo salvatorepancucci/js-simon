@@ -29,10 +29,15 @@ function startGame() {
     let timeLeft = 30;
     timerDiv.textContent = `Tempo rimasto: ${timeLeft} secondi`;
 
-    // Dopo 30 secondi, nascondi i numeri e chiedi all'utente di inserirli
-    setTimeout(() => {
-        numbersDiv.textContent = '';  // Nascondi i numeri
-        let userNumbers = [];
+    // Aggiorna il timer ogni secondo
+    let timerInterval = setInterval(() => {
+        timeLeft--;
+        timerDiv.textContent = `Tempo rimasto: ${timeLeft} secondi`;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            numbersDiv.textContent = '';  // Nascondi i numeri
+            timerDiv.textContent = '';  // Nascondi il timer
+            let userNumbers = [];
 
         // Chiedi all'utente di inserire i numeri visti, uno alla volta
         for (let i = 0; i < 5; i++) {
@@ -46,6 +51,7 @@ function startGame() {
         // Mostra il risultato nella pagina
         let resultDiv = document.getElementById('result');
         resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
+        }
     }, 30000);  // 30 secondi
 }
 
