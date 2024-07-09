@@ -34,4 +34,7 @@ function startGame() {
             let userNumber = parseInt(prompt('Inserisci uno dei numeri che hai visto:'));
             userNumbers.push(userNumber);
         }
+
+        // Confronta i numeri inseriti dall'utente con quelli generati
+        let correctNumbers = randomNumbers.filter(num => userNumbers.includes(num));
 }
