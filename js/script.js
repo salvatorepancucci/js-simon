@@ -56,7 +56,7 @@ function startGame() {
             resultDiv.innerHTML = 'Non hai indovinato nessun numero corretto';
         }
         }
-    }, 500);  // 1 secondo
+    }, 500);  // 0.5 secondi
 }
 
 // Avvia il gioco quando la pagina è caricata
