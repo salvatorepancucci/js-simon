@@ -14,3 +14,8 @@ function generateRandomNumbers(count, min, max) {
     }
     return numbers;
 }
+
+// Funzione per avviare il gioco
+function startGame() {
+    
+}
