@@ -52,7 +52,7 @@ function startGame() {
         let resultDiv = document.getElementById('result');
         resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
         }
-    }, 30000);  // 30 secondi
+    }, 1000);  // 1 secondo
 }
 
 // Avvia il gioco quando la pagina è caricata
