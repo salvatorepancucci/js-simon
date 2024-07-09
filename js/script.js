@@ -43,3 +43,6 @@ function startGame() {
         resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
     }, 30000);  // 30 secondi
 }
+
+// Avvia il gioco quando la pagina è caricata
+window.onload = startGame;
