@@ -24,6 +24,11 @@ function startGame() {
     let numbersDiv = document.getElementById('numbers');
     numbersDiv.textContent = randomNumbers.join(' ');
 
+    // Inizializza il timer
+    let timerDiv = document.getElementById('timer');
+    let timeLeft = 30;
+    timerDiv.textContent = `Tempo rimasto: ${timeLeft} secondi`;
+
     // Dopo 30 secondi, nascondi i numeri e chiedi all'utente di inserirli
     setTimeout(() => {
         numbersDiv.textContent = '';  // Nascondi i numeri
