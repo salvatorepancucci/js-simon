@@ -28,4 +28,10 @@ function startGame() {
     setTimeout(() => {
         numbersDiv.textContent = '';  // Nascondi i numeri
         let userNumbers = [];
+
+        // Chiedi all'utente di inserire i numeri visti, uno alla volta
+        for (let i = 0; i < 5; i++) {
+            let userNumber = parseInt(prompt('Inserisci uno dei numeri che hai visto:'));
+            userNumbers.push(userNumber);
+        }
 }
