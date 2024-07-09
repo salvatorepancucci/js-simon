@@ -29,34 +29,51 @@ function startGame() {
     let timeLeft = 30;
     timerDiv.textContent = `Tempo rimasto: ${timeLeft} secondi`;
 
-    // Aggiorna il timer ogni secondo
-    let timerInterval = setInterval(() => {
-        timeLeft--;
-        timerDiv.textContent = `Tempo rimasto: ${timeLeft} secondi`;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            numbersDiv.classList.add('white-text');  // Cambia il colore dei numeri
-            timerDiv.textContent = '';  // Nascondi il timer
-            let userNumbers = [];
-
-        // Chiedi all'utente di inserire i numeri visti, uno alla volta
-        for (let i = 0; i < 5; i++) {
-            let userNumber = parseInt(prompt('Inserisci uno dei numeri che hai visto:'));
-            userNumbers.push(userNumber);
-        }
-
-        // Confronta i numeri inseriti dall'utente con quelli generati
-        let correctNumbers = randomNumbers.filter(num => userNumbers.includes(num));
-
-        // Mostra il risultato nella pagina
-        let resultDiv = document.getElementById('result');
-        if (correctNumbers.length > 0) {
-            resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
+    // Funzione per aggiornare il timer
+    function updateTimer() {
+        if (timeLeft > 0) {
+            timeLeft--;
+            timerDiv.textContent = `Tempo rimasto: ${timeLeft} secondi`;
+            setTimeout(updateTimer, 50); // Aggiorna velocemente
         } else {
-            resultDiv.innerHTML = 'Non hai indovinato nessun numero corretto';
+            // Nasconde i numeri e il timer
+            numbersDiv.textContent = '';  
+            timerDiv.textContent = '';  
+            
+            // Usa setTimeout per assicurarsi che i numeri e il timer siano nascosti prima di mostrare il prompt
+            setTimeout(() => {
+                let userNumbers = [];
+                let i = 0;
+
+                // Funzione per chiedere i numeri all'utente
+                function askForNumber() {
+                    if (i < 5) {
+                        let userNumber = parseInt(prompt(`Inserisci uno dei numeri che hai visto (${i+1}/5):`));
+                        userNumbers.push(userNumber);
+                        i++;
+                        askForNumber();
+                    } else {
+                        // Confronta i numeri inseriti dall'utente con quelli generati
+                        let correctNumbers = randomNumbers.filter(num => userNumbers.includes(num));
+
+                        // Mostra il risultato nella pagina
+                        let resultDiv = document.getElementById('result');
+                        if (correctNumbers.length > 0) {
+                            resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
+                        } else {
+                            resultDiv.innerHTML = 'Non hai indovinato nessun numero corretto';
+                        }
+                    }
+                }
+
+                // Inizia a chiedere i numeri all'utente
+                askForNumber();
+            }, 100); // Ritardo per assicurarsi che il DOM sia aggiornato
         }
-        }
-    }, 500);  // 0.5 secondi
+    }
+
+    // Inizia il timer
+    setTimeout(updateTimer, 1000); // Prima chiamata dopo 1 secondo
 }
 
 // Avvia il gioco quando la pagina è caricata
