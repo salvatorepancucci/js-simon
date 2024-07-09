@@ -23,4 +23,9 @@ function startGame() {
     // Mostra i numeri nella pagina
     let numbersDiv = document.getElementById('numbers');
     numbersDiv.textContent = randomNumbers.join(' ');
+
+    // Dopo 30 secondi, nascondi i numeri e chiedi all'utente di inserirli
+    setTimeout(() => {
+        numbersDiv.textContent = '';  // Nascondi i numeri
+        let userNumbers = [];
 }
