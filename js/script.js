@@ -17,5 +17,6 @@ function generateRandomNumbers(count, min, max) {
 
 // Funzione per avviare il gioco
 function startGame() {
-    
+    // Genera 5 numeri casuali tra 1 e 100
+    let randomNumbers = generateRandomNumbers(5, 1, 100);
 }
