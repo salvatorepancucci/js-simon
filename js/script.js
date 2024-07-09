@@ -37,4 +37,9 @@ function startGame() {
 
         // Confronta i numeri inseriti dall'utente con quelli generati
         let correctNumbers = randomNumbers.filter(num => userNumbers.includes(num));
+
+        // Mostra il risultato nella pagina
+        let resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
+    }, 30000);  // 30 secondi
 }
