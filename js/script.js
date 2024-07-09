@@ -35,7 +35,7 @@ function startGame() {
         timerDiv.textContent = `Tempo rimasto: ${timeLeft} secondi`;
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
-            numbersDiv.textContent = '';  // Nascondi i numeri
+            numbersDiv.classList.add('white-text');  // Cambia il colore dei numeri
             timerDiv.textContent = '';  // Nascondi il timer
             let userNumbers = [];
 
