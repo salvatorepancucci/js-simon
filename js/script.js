@@ -50,9 +50,13 @@ function startGame() {
 
         // Mostra il risultato nella pagina
         let resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
+        if (correctNumbers.length > 0) {
+            resultDiv.innerHTML = `Hai indovinato ${correctNumbers.length} numeri corretti: ${correctNumbers.join(' ')}`;
+        } else {
+            resultDiv.innerHTML = 'Non hai indovinato nessun numero corretto';
         }
-    }, 1000);  // 1 secondo
+        }
+    }, 500);  // 1 secondo
 }
 
 // Avvia il gioco quando la pagina è caricata
