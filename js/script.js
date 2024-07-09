@@ -6,5 +6,11 @@ function getRandomNumber(min, max) {
 // Funzione per generare un array di numeri casuali
 function generateRandomNumbers(count, min, max) {
     let numbers = [];
-    
+    while (numbers.length < count) {
+        let num = getRandomNumber(min, max);
+        if (!numbers.includes(num)) {
+            numbers.push(num);
+        }
+    }
+    return numbers;
 }
